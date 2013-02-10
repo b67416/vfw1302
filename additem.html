@@ -21,17 +21,17 @@ Project 1
 			<h1>TV Show Reminder</h1>
 		</header>
 		<section>
-			<form>
+			<form action="#" method="post">
 				<fieldset>
 					<legend>Add TV Show</legend>
-					<input type="hidden" name="action" value="addTVShow">
+					<input type="hidden" id="action" value="addTVShow">
 					<p>
 						<label for="showName">Show Name: </label>
-						<input type="text" name="showName" id="showName" placeholder="Name of the TV Show" required>
+						<input type="text" id="showName" placeholder="Name of the TV Show" required>
 					</p>
 					<p>
 						<label for="dayOfWeek">Day of Week: </label>
-						<select name="dayOfWeek" id="dayOfWeek">
+						<select id="dayOfWeek">
 							<option value="Sunday">Sunday</option>
 							<option value="Monday">Monday</option>
 							<option value="Tuesday">Tuesday</option>
@@ -43,19 +43,19 @@ Project 1
 					</p>
 					<p>
 						<label for="time">Time: </label>
-						<input type="time" name="time" id="time" required>				
+						<input type="time" id="time" required>				
 					</p>
 					<p>
 						<label for="favorite">Favorite? </label>
-						<input type="checkbox" name="favorite" id="favorite">
+						<input type="checkbox" id="favorite">
 					</p>
 					<p>
 						<label for="startingDate">Starting Date: </label>
-						<input type="date" name="startingDate" id="startingDate" required>
+						<input type="date" id="startingDate" required>
 					</p>
 					<p>
 						<label for="description">Description: </label>
-						<textarea name="description" id="description" rows="5" cols="25" placeholder="Enter a description of the show" required></textarea>
+						<textarea id="description" rows="5" cols="25" placeholder="Enter a description of the show" required></textarea>
 					</p>
 					<p>
 						<input type="submit">
