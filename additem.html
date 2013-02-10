@@ -26,23 +26,23 @@ Project 1
 				<input type="hidden" name="action" value="addTVShow">
 				<p>
 					<label for="showName">Show Name: </label>
-					<input type="text" name="showName" id="showName">
+					<input type="text" name="showName" id="showName" placeholder="Name of the TV Show" required>
 				</p>
 				<p>
 					<label for="dayOfWeek">Day of Week: </label>
 					<select name="dayOfWeek" id="dayOfWeek">
-						<option value="sunday">Sunday</option>
-						<option value="monday">Monday</option>
-						<option value="tuesday">Tuesday</option>
-						<option value="wednesday">Wednesday</option>
-						<option value="thursday">Thursday</option>
-						<option value="friday">Friday</option>
-						<option value="saturday">Saturday</option>
+						<option value="Sunday">Sunday</option>
+						<option value="Monday">Monday</option>
+						<option value="Tuesday">Tuesday</option>
+						<option value="Wednesday">Wednesday</option>
+						<option value="Thursday">Thursday</option>
+						<option value="Friday">Friday</option>
+						<option value="Saturday">Saturday</option>
 					</select>
 				</p>
 				<p>
 					<label for="time">Time: </label>
-					<input type="time" name="time" id="time">				
+					<input type="time" name="time" id="time" placeholder="What time?" required>				
 				</p>
 				<p>
 					<label for="favorite">Favorite? </label>
@@ -50,11 +50,11 @@ Project 1
 				</p>
 				<p>
 					<label for="startingDate">Starting Date: </label>
-					<input type="date" name="startingDate" id="startingDate">
+					<input type="date" name="startingDate" id="startingDate" placeholder="Date show starts?" required>
 				</p>
 				<p>
 					<label for="description">Description: </label>
-					<textarea rows="5" cols="25"></textarea>
+					<textarea rows="5" cols="25" placeholder="Enter a description of the show" required></textarea>
 				</p>
 				<p>
 					<input type="submit">
