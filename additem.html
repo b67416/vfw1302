@@ -1,1 +1,70 @@
-//
+<!DOCTYPE html>
+
+<!-- 
+Ryan Wahle
+VFW 1302
+Project 1 
+--> 
+
+
+<html>
+	<head>
+		<title>TV Show Reminder</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<header>
+			<h1>TV Show Reminder</h1>
+		</header>
+		<form>
+			<fieldset>
+				<legend>Add TV Show</legend>
+				<input type="hidden" name="action" value="addTVShow">
+				<p>
+					<label for="showName">Show Name: </label>
+					<input type="text" name="showName" id="showName">
+				</p>
+				<p>
+					<label for="dayOfWeek">Day of Week: </label>
+					<select name="dayOfWeek" id="dayOfWeek">
+						<option value="sunday">Sunday</option>
+						<option value="monday">Monday</option>
+						<option value="tuesday">Tuesday</option>
+						<option value="wednesday">Wednesday</option>
+						<option value="thursday">Thursday</option>
+						<option value="friday">Friday</option>
+						<option value="saturday">Saturday</option>
+					</select>
+				</p>
+				<p>
+					<label for="time">Time: </label>
+					<input type="time" name="time" id="time">				
+				</p>
+				<p>
+					<label for="favorite">Favorite? </label>
+					<input type="checkbox" name="favorite" id="favorite">
+				</p>
+				<p>
+					<label for="startingDate">Starting Date: </label>
+					<input type="date" name="startingDate" id="startingDate">
+				</p>
+				<p>
+					<label for="description">Description: </label>
+					<textarea rows="5" cols="25"></textarea>
+				</p>
+				<p>
+					<input type="submit">
+				</p>
+			</fieldset>
+		</form>
+		<footer>
+			<p>
+				<a href="#">Clear Stored Data</a>
+			</p>
+			<p>
+				<a href="#">Display Data Link</a>
+			</p>
+		</footer>
+	</body>
+</html>
+
