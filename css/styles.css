@@ -59,7 +59,7 @@ input {
 	box-sizing: border-box;
 }
 
-input[type=submit] {
+input[type=button] {
 	width: 50%;
 	font-size: 12pt;
 	background-color: #EEEEE7;
