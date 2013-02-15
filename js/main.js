@@ -80,14 +80,18 @@ function createElementLI (text)
 	return tag;
 }
 
-//alert(localStorage.length);
+// This is our starting point (after the DOM loads)
+function DOMLoaded ()
+{
+	// Add some event listeners
+	var addTVShowButton = $("addTVShowButton");
+	var clearStoredDataLink = $("clearStoredDataLink");
+	var displayDataLink = $("displayDataLink");
 
-// Add some event listeners
-var addTVShowButton = $("addTVShowButton");
-var clearStoredDataLink = $("clearStoredDataLink");
-var displayDataLink = $("displayDataLink");
+	addTVShowButton.addEventListener("click", addTVShow);
+	clearStoredDataLink.addEventListener("click", clearStoredData);
+	displayDataLink.addEventListener("click", displayData);
+}
 
-addTVShowButton.addEventListener("click", addTVShow);
-clearStoredDataLink.addEventListener("click", clearStoredData);
-displayDataLink.addEventListener("click", displayData);
+window.addEventListener("DOMContentLoaded", DOMLoaded);
 
