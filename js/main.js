@@ -21,6 +21,10 @@ function addTVShow ()
 	
 	var key = Math.floor(Math.random()*10000000001);
 	localStorage.setItem(key, JSON.stringify(myTVShow));
+	
+	// Tell the user we saved some data and reload blank page
+	alert("Thank you for adding a TV Show");
+	window.location.reload();
 }
 
 function clearStoredData ()
