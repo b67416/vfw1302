@@ -80,9 +80,31 @@ function createElementLI (text)
 	return tag;
 }
 
+function addDaysOfWeekSelectTag ()
+{
+	var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	
+	var selectionLabel = $("dayOfWeekSelection");
+	var selectTag = document.createElement("select");
+	
+	for (var i = 0; i < daysOfWeek.length; i++) {
+		var optionTag = document.createElement("option");
+		optionTag.value = daysOfWeek[i];
+		optionTag.innerHTML = daysOfWeek[i];
+		selectTag.appendChild(optionTag);
+	}
+	
+	selectionLabel.appendChild(selectTag);
+	
+}
+
+
 // This is our starting point (after the DOM loads)
 function DOMLoaded ()
 {
+	// Add our select tag
+	addDaysOfWeekSelectTag();
+
 	// Add some event listeners
 	var addTVShowButton = $("addTVShowButton");
 	var clearStoredDataLink = $("clearStoredDataLink");
