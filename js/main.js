@@ -86,6 +86,7 @@ function addDaysOfWeekSelectTag ()
 	
 	var selectionLabel = $("dayOfWeekSelection");
 	var selectTag = document.createElement("select");
+	selectTag.setAttribute("id", "dayOfWeek");
 	
 	for (var i = 0; i < daysOfWeek.length; i++) {
 		var optionTag = document.createElement("option");
