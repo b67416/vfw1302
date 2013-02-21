@@ -1,6 +1,6 @@
 /* Ryan Wahle */
 /* VFW 1302   */
-/* Project 2  */
+/* Project 3  */
 
 function $ (element)
 {
@@ -67,6 +67,9 @@ function displayData ()
 			tagTVShowList.appendChild(createElementLI("Starting Date: " + myTVShow.startingDate));
 			tagTVShowList.appendChild(createElementLI("Description: " + myTVShow.description));
 			
+			tagTVShowList.appendChild(createDeleteLink("Delete TV Show", key));
+			tagTVShowList.appendChild(createEditLink("Edit TV Show", key));				
+			
 			
 			// Put it all the added HTML to the page!
 			$("mainSection").appendChild(tagTVShowList);
@@ -74,6 +77,31 @@ function displayData ()
 	} else {
 		alert("Please add a TV Show first.");
 	}
+}
+
+function deleteTVShow ()
+{
+	var deleteConfirmation = confirm("Are you sure you want to delete that TV Show?");
+	
+	if (deleteConfirmation) {
+		localStorage.removeItem(this.key);
+		window.location.reload();
+	}
+}
+
+function createEditLink (text, key)
+{
+
+}
+
+function createDeleteLink (text, key)
+{
+	var tag = document.createElement("a");
+	tag.innerHTML = text;
+	tag.href = "#";
+	tag.key = key;	
+	tag.addEventListener("click", deleteTVShow);
+	return tag;
 }
 
 function createElementLI (text)
