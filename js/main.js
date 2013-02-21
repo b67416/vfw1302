@@ -19,11 +19,22 @@ function addTVShow ()
 			description: $("description").value
 	};
 	
-	var key = Math.floor(Math.random()*10000000001);
+	// If no key, then we are adding a new TV Show.
+	// If key, then we are saving an edit.
+	if (!this.key) {
+		var key = Math.floor(Math.random()*10000000001);
+		var alertMessage = "Thank you for adding a TV Show";
+	} else {
+		var key = this.key;
+		var alertMessage = "Your edits to the TV Show have been saved";
+	}
+	
 	localStorage.setItem(key, JSON.stringify(myTVShow));
 	
+	console.log("Key: " + key);
+	
 	// Tell the user we saved some data and reload blank page
-	alert("Thank you for adding a TV Show");
+	alert(alertMessage);
 	window.location.reload();
 }
 
@@ -51,6 +62,9 @@ function displayData ()
 		$("displayDataLink").style.display = "none";
 		$("addTVShowLink").style.display = "inline";
 		
+		var sectionListTVShows = document.createElement("section");
+		sectionListTVShows.setAttribute("id", "sectionListTVShows");
+		
 		// Create the new html so we can display the data
 		for (var i = 0; i < localStorageLength; i++) {
 			var key = localStorage.key(i);
@@ -72,7 +86,9 @@ function displayData ()
 			
 			
 			// Put it all the added HTML to the page!
-			$("mainSection").appendChild(tagTVShowList);
+			sectionListTVShows.appendChild(tagTVShowList);
+			
+			$("mainSection").appendChild(sectionListTVShows);
 		}
 	} else {
 		alert("Please add a TV Show first.");
@@ -89,9 +105,43 @@ function deleteTVShow ()
 	}
 }
 
+function editTVShow ()
+{
+	var myTVShow = JSON.parse(localStorage.getItem(this.key));
+	
+	$("showName").value = myTVShow.showName;
+	$("dayOfWeek").value = myTVShow.dayOfWeek;
+	$("time").value = myTVShow.time;
+	$("rating").value = myTVShow.rating;
+	$("startingDate").value = myTVShow.startingDate;
+	$("description").value = myTVShow.description;
+	
+	if (myTVShow.favorite) {
+		$("favorite").setAttribute("checked", "checked");
+	}
+	
+	// Setup the save button for editing the tv show
+	//$("addTVShowButton").removeEventListener("click", addTVShow);
+	$("addTVShowButton").value = "Save";
+	//$("addTVShowButton").addEventListener("click", saveEditedTVShow);
+	$("addTVShowButton").key = this.key;
+	
+	// Hide the listing and show the form with updated legend
+	$("actionDescription").innerHTML = "Editing . . .";
+	$("actionDescription").style.backgroundColor = "yellow";
+	$("sectionListTVShows").style.display = "none";
+	$("addTVShowForm").style.display = "";
+	
+}
+
 function createEditLink (text, key)
 {
-
+	var tag = document.createElement("a");
+	tag.innerHTML = text;
+	tag.href = "#";
+	tag.key = key;
+	tag.addEventListener("click", editTVShow);
+	return tag;
 }
 
 function createDeleteLink (text, key)
