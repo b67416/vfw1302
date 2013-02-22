@@ -74,11 +74,14 @@ input[type=checkbox] {
 
 #submitButtonContainer {
 	text-align: center;
-	
 }
 
 #addTVShowLink {
 	display: none;
+}
+
+#formErrors {
+	color: red;
 }
 
 textarea {

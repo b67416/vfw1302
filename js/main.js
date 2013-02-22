@@ -7,7 +7,73 @@ function $ (element)
 	return document.getElementById(element);
 }
 
-function addTVShow ()
+function validateTVShowFormFields ()
+{
+	var errorMessagesArray = [];
+	
+	// Reset the formErrors data to be blank
+	resetFormErrors();
+	
+	// Validate the individual form fields that require validation
+	var regEx = /\S/;
+	if (!regEx.exec($("showName").value)) {
+		errorMessagesArray.push("Please enter the Show Name");
+		$("showName").style.border = "1px solid red";
+		$("showName").value = "";
+	} 
+
+	var regEx = /^\d{1,2}:\d{2}$/;
+	if (!regEx.exec($("time").value)) {
+		errorMessagesArray.push("Please select a Time or enter in 24HR format: HH:MM");
+		$("time").style.border = "1px solid red";
+	} 
+
+	var regEx = /^\d{4}-\d{1,2}-\d{1,2}$/;
+	if (!regEx.exec($("startingDate").value)) {
+		errorMessagesArray.push("Please select a Starting Date or enter in format: YYYY-MM-DD");
+		$("startingDate").style.border = "1px solid red";
+	} 
+
+	var regEx = /\S/;
+	if (!regEx.exec($("description").value)) {
+		errorMessagesArray.push("Please enter the Description");
+		$("description").style.border = "1px solid red";
+		$("description").value = "";
+	} 
+
+	// Check if any errors
+	if (errorMessagesArray.length > 0) {
+		// We have errors so don't save and show errors to user.
+		for (var i = 0; i < errorMessagesArray.length; i++) {
+			var errorTagLI = document.createElement("li");
+			errorTagLI.innerHTML = errorMessagesArray[i];
+			$("formErrors").appendChild(errorTagLI);
+		}
+	} else {
+		// No Errors. Save the TV Show
+		saveTVShow(this.key);
+	}
+}
+
+// This function removes all errors from previous actions
+// and also resets the form borders to black in case they were red.
+//
+// Why? Because I noticed if you get errors and do nothing about it,
+//		then go edit a TV Show, the errors still show on the initial
+//		edit screen.
+//
+//		So instead of putting this code in only the validate function
+//		I am also putting it in the edit function.
+function resetFormErrors ()
+{
+	$("formErrors").innerHTML = "";
+	$("showName").style.border = "1px solid black";
+	$("time").style.border = "1px solid black";
+	$("startingDate").style.border = "1px solid black";
+	$("description").style.border = "1px solid black";
+}
+
+function saveTVShow (localStorageKey)
 {
 	var myTVShow = {
 			showName: $("showName").value,
@@ -21,11 +87,11 @@ function addTVShow ()
 	
 	// If no key, then we are adding a new TV Show.
 	// If key, then we are saving an edit.
-	if (!this.key) {
+	if (!localStorageKey) {
 		var key = Math.floor(Math.random()*10000000001);
 		var alertMessage = "Thank you for adding a TV Show";
 	} else {
-		var key = this.key;
+		var key = localStorageKey;
 		var alertMessage = "Your edits to the TV Show have been saved";
 	}
 	
@@ -107,6 +173,11 @@ function deleteTVShow ()
 
 function editTVShow ()
 {
+	// Reset any form validation errors in case user went from not fixing
+	// errors to editing a TV Show
+	resetFormErrors();
+
+	// The rest of the function
 	var myTVShow = JSON.parse(localStorage.getItem(this.key));
 	
 	$("showName").value = myTVShow.showName;
@@ -121,9 +192,7 @@ function editTVShow ()
 	}
 	
 	// Setup the save button for editing the tv show
-	//$("addTVShowButton").removeEventListener("click", addTVShow);
 	$("addTVShowButton").value = "Save";
-	//$("addTVShowButton").addEventListener("click", saveEditedTVShow);
 	$("addTVShowButton").key = this.key;
 	
 	// Hide the listing and show the form with updated legend
@@ -193,7 +262,7 @@ function DOMLoaded ()
 	var clearStoredDataLink = $("clearStoredDataLink");
 	var displayDataLink = $("displayDataLink");
 
-	addTVShowButton.addEventListener("click", addTVShow);
+	addTVShowButton.addEventListener("click", validateTVShowFormFields);
 	clearStoredDataLink.addEventListener("click", clearStoredData);
 	displayDataLink.addEventListener("click", displayData);
 }
