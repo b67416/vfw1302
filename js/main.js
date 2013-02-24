@@ -138,19 +138,22 @@ function displayData ()
 			var myTVShow = JSON.parse(value);
 		
 			var tagTVShowList = document.createElement("ul");
+			tagTVShowList.setAttribute("id", "itemTVShow");
 			
-			tagTVShowList.appendChild(createElementLI("Show Name: " + myTVShow.showName));
-			tagTVShowList.appendChild(createElementLI("Day of Week: " + myTVShow.dayOfWeek));
-			tagTVShowList.appendChild(createElementLI("Time: " + myTVShow.time));
-			tagTVShowList.appendChild(createElementLI("Favorite: " + myTVShow.favorite));
-			tagTVShowList.appendChild(createElementLI("Rating: " + myTVShow.rating));
-			tagTVShowList.appendChild(createElementLI("Starting Date: " + myTVShow.startingDate));
-			tagTVShowList.appendChild(createElementLI("Description: " + myTVShow.description));
+			tagTVShowList.appendChild(createElementLI("Show Name: " + myTVShow.showName, "itemTVShowHeader"));
+			tagTVShowList.appendChild(createElementLI("Day of Week: " + myTVShow.dayOfWeek, "itemTVShowDetail"));
+			tagTVShowList.appendChild(createElementLI("Time: " + myTVShow.time, "itemTVShowDetail"));
+			tagTVShowList.appendChild(createElementLI("Favorite: " + myTVShow.favorite, "itemTVShowDetail"));
+			tagTVShowList.appendChild(createElementLI("Rating: " + myTVShow.rating, "itemTVShowDetail"));
+			tagTVShowList.appendChild(createElementLI("Starting Date: " + myTVShow.startingDate, "itemTVShowDetail"));
+			tagTVShowList.appendChild(createElementLI("Description: " + myTVShow.description, "itemTVShowDetail"));
 			
-			tagTVShowList.appendChild(createDeleteLink("Delete TV Show", key));
-			tagTVShowList.appendChild(createEditLink("Edit TV Show", key));				
-			
-			
+			var linksLI = createElementLI("");
+			linksLI.appendChild(createDeleteLink("Delete TV Show", key));
+			linksLI.appendChild(createEditLink("Edit TV Show", key));				
+
+			tagTVShowList.appendChild(linksLI);
+						
 			// Put it all the added HTML to the page!
 			sectionListTVShows.appendChild(tagTVShowList);
 			
@@ -206,6 +209,7 @@ function editTVShow ()
 function createEditLink (text, key)
 {
 	var tag = document.createElement("a");
+	tag.setAttribute("id", "showLink");
 	tag.innerHTML = text;
 	tag.href = "#";
 	tag.key = key;
@@ -216,6 +220,7 @@ function createEditLink (text, key)
 function createDeleteLink (text, key)
 {
 	var tag = document.createElement("a");
+	tag.setAttribute("id", "showLink");
 	tag.innerHTML = text;
 	tag.href = "#";
 	tag.key = key;	
@@ -223,10 +228,11 @@ function createDeleteLink (text, key)
 	return tag;
 }
 
-function createElementLI (text)
+function createElementLI (text, tagID)
 {
 	var tag = document.createElement("li");
 	tag.innerHTML = text;
+	tag.setAttribute("id", tagID);
 	
 	return tag;
 }

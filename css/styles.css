@@ -76,9 +76,6 @@ input[type=checkbox] {
 	text-align: center;
 }
 
-#addTVShowLink {
-	display: none;
-}
 
 #formErrors {
 	color: red;
@@ -120,4 +117,32 @@ a {
 	font-weight: bold;
 	color: #4A7B6F;
 	font-size: 9pt;
+}
+
+#addTVShowLink {
+	display: none;
+}
+
+#showLink {
+	background-color: #242E35;
+	color: #EEEEE7;
+	margin-right: 10px;
+}
+
+#itemTVShow > li {
+	fdborder: 1px solid white;
+	padding: 10px;
+	list-style-type: none;
+	width: 85%;
+}
+
+#itemTVShowHeader {
+	background-color: #242E35;
+	color: #EEEEE7;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+#itemTVShowDetail {
+	background-color: #CCDDDD;
 }
