@@ -140,8 +140,10 @@ function displayData ()
 			var tagTVShowList = document.createElement("ul");
 			tagTVShowList.setAttribute("id", "itemTVShow");
 			
+
 			tagTVShowList.appendChild(createElementLI("Show Name: " + myTVShow.showName, "itemTVShowHeader"));
-			tagTVShowList.appendChild(createElementLI("Day of Week: " + myTVShow.dayOfWeek, "itemTVShowDetail"));
+			tagTVShowList.appendChild(getImageLI(myTVShow.dayOfWeek));
+			//tagTVShowList.appendChild(createElementLI("Day of Week: " + myTVShow.dayOfWeek, "itemTVShowDetail"));
 			tagTVShowList.appendChild(createElementLI("Time: " + myTVShow.time, "itemTVShowDetail"));
 			tagTVShowList.appendChild(createElementLI("Favorite: " + myTVShow.favorite, "itemTVShowDetail"));
 			tagTVShowList.appendChild(createElementLI("Rating: " + myTVShow.rating, "itemTVShowDetail"));
@@ -162,6 +164,17 @@ function displayData ()
 	} else {
 		alert("Please add a TV Show first.");
 	}
+}
+
+function getImageLI (dayOfWeek)
+{
+	var imageTag = document.createElement("img");
+	imageTag.setAttribute("src", "images/" + dayOfWeek + ".png");
+
+	var imageLI = createElementLI("", "itemTVShowDetail");
+	imageLI.appendChild(imageTag);
+	
+	return imageLI;
 }
 
 function deleteTVShow ()
