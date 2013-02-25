@@ -1,6 +1,6 @@
 /* Ryan Wahle */
 /* VFW 1302   */
-/* Project 3  */
+/* Project 4  */
 
 function $ (element)
 {
