@@ -169,7 +169,7 @@ function displayData ()
 function getImageLI (dayOfWeek)
 {
 	var imageTag = document.createElement("img");
-	imageTag.setAttribute("src", "images/" + dayOfWeek + ".png");
+	imageTag.setAttribute("src", "img/" + dayOfWeek + ".png");
 
 	var imageLI = createElementLI("", "itemTVShowDetail");
 	imageLI.appendChild(imageTag);
