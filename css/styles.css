@@ -2,6 +2,10 @@
 /* VFW 1302   */
 /* Project 4  */
 
+body {
+	font-family: 'Vollkorn', serif;
+}
+
 h1 {
 	background-color: #4A7B6F;
 	text-align: center;
@@ -14,6 +18,9 @@ h1 {
 	border-top-right-radius: 25px;
 
 	padding: 25px;
+	
+	font-family: "Ubuntu", serif;
+
 }
 
 h2 {
@@ -66,6 +73,7 @@ input[type=button] {
 	border-radius: 25px;
 	padding: 10px;
 	color: #4A7B6F;
+	font-family: "Ubuntu", serif;
 }
 
 input[type=checkbox] {
@@ -102,6 +110,8 @@ legend {
 	
 	font-size: 14pt;
 	font-weight: bold;
+	
+	font-family: "Ubuntu", serif; 
 }
 
 section {
@@ -130,7 +140,6 @@ a {
 }
 
 #itemTVShow > li {
-	fdborder: 1px solid white;
 	padding: 10px;
 	list-style-type: none;
 	width: 85%;
