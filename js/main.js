@@ -97,8 +97,6 @@ function saveTVShow (localStorageKey)
 	
 	localStorage.setItem(key, JSON.stringify(myTVShow));
 	
-	console.log("Key: " + key);
-	
 	// Tell the user we saved some data and reload blank page
 	alert(alertMessage);
 	window.location.reload();
@@ -143,7 +141,6 @@ function displayData ()
 
 			tagTVShowList.appendChild(createElementLI("Show Name: " + myTVShow.showName, "itemTVShowHeader"));
 			tagTVShowList.appendChild(getImageLI(myTVShow.dayOfWeek));
-			//tagTVShowList.appendChild(createElementLI("Day of Week: " + myTVShow.dayOfWeek, "itemTVShowDetail"));
 			tagTVShowList.appendChild(createElementLI("Time: " + myTVShow.time, "itemTVShowDetail"));
 			tagTVShowList.appendChild(createElementLI("Favorite: " + myTVShow.favorite, "itemTVShowDetail"));
 			tagTVShowList.appendChild(createElementLI("Rating: " + myTVShow.rating, "itemTVShowDetail"));
@@ -162,7 +159,19 @@ function displayData ()
 			$("mainSection").appendChild(sectionListTVShows);
 		}
 	} else {
-		alert("Please add a TV Show first.");
+		var addJSONDataConfirmation = confirm("There are currently no TV Shows to display. Would you like to load some pre-defined data?");
+	
+		if (addJSONDataConfirmation) {
+			for (var tvShowObjectKey in jsonFakeData) {
+				var fakeTVShowObject = jsonFakeData[tvShowObjectKey];
+				var key = Math.floor(Math.random() * 10000000001);
+				localStorage.setItem(key, JSON.stringify(fakeTVShowObject));
+			}
+			
+			alert ("The pre-defined data has been loaded.");
+			
+			displayData();
+		}
 	}
 }
 
